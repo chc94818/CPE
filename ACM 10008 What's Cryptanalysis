@@ -1,0 +1,48 @@
+/=
+計算A~Z中出現的個別字母次數
+並依照次數多寡排序
+相同則按照字母前後排序
+*/
+
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+using namespace std;
+
+int main(){
+	int n;
+	char str[1001];
+	
+		int a[26]={0};
+		int max = 0;
+	cin >> n;
+	for(int i = 0 ; i < n+1 ; i ++){
+
+		gets(str);
+		for(int j = 0; j < strlen(str) ; j++){
+		//個別字母計入次數
+			if(str[j]>= 'a' && str[j] <= 'z'){
+				a[str[j]-'a']++;
+			//	printf("%c %d\r\n",str[j],a[str[j]-'a']);
+				if(a[str[j]-'a']>max) max = a[str[j]-'a'];
+			}
+			if(str[j]>= 'A' && str[j] <= 'Z'){
+				a[str[j]-'A']++;
+			   	//printf("%c %d\r\n",str[j],a[str[j]-'A']);
+			   	if(a[str[j]-'A']>max) max = a[str[j]-'A'];
+			}
+		}
+	}
+	//排序輸出
+			for(int j = max; j>0 ; j--){
+			for(int k = 0 ; k < 26 ; k++){
+				if(a[k] == j){
+					printf("%c %d\n",k+'A',a[k]);
+				}
+			}
+		}
+
+	
+	return 0 ;
+}
