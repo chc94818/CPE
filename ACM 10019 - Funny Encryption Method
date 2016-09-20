@@ -1,15 +1,45 @@
+　/*
+　數字N  若是以十進制表示，將之換算為二進制，並求其1的數量
+　	 若是以十六進制表示，將之換算為二進制，並求其1的數量
+　*/
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
 using namespace std;
+/*
+計算其16進制換成2進制之1數量
+16進制的每位數字可以換為四位的是二進制
+因此可將每位數字分別求其2進制1數量再加總
+由於題目輸入數字只會有0~9，故預先算出0~9的2進制1數量加快運算
+*/
+int h[10] = {0, 1, 1, 2, 1, 2, 2, 3, 1, 2};
+int decimalCount(int d){
+	int b1 =1;
+	for(;d!=1;d/=2){
+		if(d%2==1){
+			b1++;
+		}
+	}
+	return b1;
+}
+
+//計算其10進制換成2進制之1數量
+int hexadecimalCount(int n)
+{
+    int i = 0;
+    for (; n; n /= 10)
+        i += h[n % 10];
+    return i;
+}
 
 int main(){
 	int n = 0 ;
-	int x1,x2,b1,b2;
+
 	cin >> n;
 	for(int i = 0 ; i < n ; i++){
-		scanf("%d %d",x1,x2);
-		cout << x1 <<" " << x2<<endl;
+		int x;
+		scanf("%d ",&x);
+		cout << decimalCount(x) <<" " << hexadecimalCount(x)<<endl;
 	}
 	return 0;
 }
