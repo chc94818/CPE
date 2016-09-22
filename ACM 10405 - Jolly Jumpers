@@ -1,1 +1,45 @@
-
+/*
+輸入N個數字
+每兩個數字間的相差的絕對值
+剛好佈滿[1,n-1]就是Jolly
+*/
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+using namespace std;
+int main(){
+	int n = 0;
+	while(scanf("%d",&n)!= EOF){
+		int a,b;
+		int isJolly = 1;
+		scanf("%d",&a);
+		if(n==1){
+			cout <<"Jolly"<<endl;
+			continue;
+		}
+		int r[n-1] = {0};
+		
+		for(int i = 0 ; i < n-1 ; i++){
+			scanf("%d",&b);
+		
+			if(abs(a-b)>n-1||abs(a-b)<1){
+			isJolly = 0;
+			
+			}else{
+				r[abs(a-b)]++;
+				if(r[abs(a-b)]==2){
+				isJolly = 0;				
+				}						
+			}
+			
+			a=b;
+		}
+		if(isJolly){
+			cout << "Jolly"<<endl;
+		}else{
+			cout << "Not jolly"<<endl;
+		}
+	
+	}
+	return 0;
+}
