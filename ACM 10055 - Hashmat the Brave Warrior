@@ -1,17 +1,24 @@
 /*
-計算敵我人數差距
-且敵人必定比我方多
-相減得之
+計算雙方人數差距
+關鍵在input 最高到 2^32
+int 範圍是(- 2^31) ~ (2^31 - 1) 
+而 unsigned int 則是 0 ~ (2^32 - 1) 
+都有機會比測資小，所以會 overflow
+因此我們要利用 long long int (- 2^63) ~ (2^63 - 1)  來解決。
 */
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 using namespace std;
-int	main(){
-	int m,e;
-	while(scanf("%d%d",&m,&e)!=EOF){
-		cout << e-m<<endl;
-	}
-	
-	return 0;
-}	
+int main() {
+  long long int x, y;
+  while (scanf("%lld %lld", &x, &y) != EOF) {
+  	if(x<y){
+  		long long int temp = y;
+  		y = x;
+  		x = temp;
+  	}
+    cout << x-y<<endl;
+  }
+  return 0;
+}
