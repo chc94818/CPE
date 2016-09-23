@@ -1,0 +1,47 @@
+/*
+n個人擲骰子
+直到有人擲出預設的數字則勝利
+求k個人為勝利者的機率
+擲出預設數字的機率為 p
+第k個人勝利的機率為
+前k-1個人都失敗而自己成功
+第一輪成功的機率為
+(1-p)^(k-1)*p
+第二輪成功的機率為(前k-1個人失敗且全部n個人都失敗過一次)
+(1-p)^(k-1)*p * (1-p)^n
+第三輪成功的機率為
+(1-p)^(k-1)*p * (1-p)^2n
+...
+...
+...
+第f輪成功的機率為
+(1-p)^(k-1)*p * (1-p)^(f-1)n
+當f趨近無線大
+由等比級數得出第k個人勝利的機率為
+(1-p)^(k-1)*p / (1-(1-P)^n)
+*/
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+using namespace std;
+
+int main(){
+	int testcase;
+	scanf("%d",&testcase);
+	for(int i = 0 ; i < testcase ; i++){
+		float p;
+		int n,k;
+		float a;
+		scanf("%d%f%d",&n,&p,&k);
+		 if (p == 0.0) {
+            printf("0.0000\n");
+            continue;
+        }
+		a = pow(1-p,k-1)*p/(1-pow((1-p),n));
+		printf("%.4f\n",a);
+		
+
+	}
+	return 0;
+}
