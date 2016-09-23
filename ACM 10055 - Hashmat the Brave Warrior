@@ -1,0 +1,17 @@
+/*
+計算敵我人數差距
+且敵人必定比我方多
+相減得之
+*/
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+using namespace std;
+int	main(){
+	int m,e;
+	while(scanf("%d%d",&m,&e)!=EOF){
+		cout << e-m<<endl;
+	}
+	
+	return 0;
+}	
