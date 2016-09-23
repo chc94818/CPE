@@ -1,0 +1,33 @@
+/*
+找出N個數字的中位數
+*/
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <algorithm>
+using namespace std;
+
+int main(){
+	int n;
+	while(scanf("%d",&n)!=EOF){
+		unsigned int x[n];
+		for(int i = 0 ; i < n ; i++){
+			scanf("%u",&x[i]);
+		}		
+		sort(x,x+n);
+		int counter = 0;
+		if(n%2==0){
+			for(int i = 0 ; i < n ; i++){
+				if(x[i]==x[n/2-1]||x[i]==x[n/2])counter++;
+			}
+			cout <<x[n/2-1]<<" "<< counter <<" " <<x[n/2]-x[n/2-1]+1<<endl;
+		}else{
+			for(int i = 0 ; i < n ; i++){
+				if(x[i]==x[n/2])counter++;
+			}
+			cout <<x[n/2] <<" " << counter <<" 1"<<endl;
+		}
+
+	}
+	return 0;
+}
