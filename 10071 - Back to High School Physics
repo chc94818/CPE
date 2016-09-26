@@ -1,0 +1,19 @@
+/*
+等加速度問題
+給經過一段時間後的粒子速度
+求兩倍時間後的粒子總位移量
+該時間之粒子速度恰為平均速度
+平均速度乘上總時間等於總位移量
+*/
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+using namespace std;
+
+int main(){
+	int v,t;
+	while(scanf("%d%d",&v,&t)!=EOF){
+		cout << v*t*2 <<endl;
+	}
+	return 0;
+}
