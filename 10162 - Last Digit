@@ -1,0 +1,46 @@
+/*
+給一數字n
+根據公式 s = 1^1 + 2^2 +...+ n^n
+求s最小的的位元為何
+這題有點技巧
+由於數字n的範圍在[0,2*10^100]
+這麼大的數值顯然不可能要我們一個一個算
+所以題目可能是要我們從n或s身上找到最小位元的規律
+最後我發現s的數值會以100為一個循環
+所以我們只需要觀察n%100的數值就可以知道s的最小位元了
+*/
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+using namespace std;
+int d[100];
+int power(int n){
+	int r = n%10;
+	int p = 1;
+	for(int i = 0; i < n ;i++){
+		p = r*p%10;;
+	}
+	return p;
+}
+int main(){
+	d[0] = 0;
+	
+	for(int i = 1 ; i < 100; i++){
+		d[i] = d[i-1] + power(i);
+		d[i]%=10;	
+	}
+	char s[10000];
+	while(scanf("%s",&s)!=EOF){
+		if(s[0]=='0')break;
+		if(strlen(s)<2){
+			cout << d[(s[strlen(s)-1]-48)]<<endl;
+		}else{
+			cout << d[(s[strlen(s)-2]-48)*10+(s[strlen(s)-1]-48)]<<endl;
+		}
+	}
+	return 0;
+}
+
+  
