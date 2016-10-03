@@ -1,0 +1,26 @@
+/*
+解一元三次式最大值
+*/
+
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+
+using namespace std;
+int main(){
+	double w,l;
+	while(scanf("%lf%lf",&w,&l)==2){
+	//cout <<w <<" " <<l <<endl;
+		double x = (l+w-sqrt((w*w-w*l+l*l)))/6;
+		printf("%.3lf 0.000 ",x);
+		if(w>l){
+			printf("%.3lf\n",l/2);
+		}else{
+			printf("%.3lf\n",w/2);
+		}
+	
+	}
+	return 0;
+}
