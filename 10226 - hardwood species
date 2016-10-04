@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cstdio>
+#include <map>
+using namespace std;
+
+int main(){
+  int numTestcase;
+  while( scanf("%d", &numTestcase) != EOF ){
+    getchar(); // for '\n'
+
+    string input;
+    getline(cin, input); // for blank line
+
+    for( int testcase = 0 ; testcase < numTestcase ; ++testcase ){
+      if( testcase > 0 ){
+        printf("\n");
+      }
+
+      map<string, int> numSpecies;
+      int total = 0;
+      while( getline(cin, input) && input != "" ){
+        ++numSpecies[input];
+        ++total;
+      }
+
+      for( map<string, int>::iterator it = numSpecies.begin();
+           it != numSpecies.end() ; ++it ){
+        printf("%s %.4f\n", it->first.c_str(), (double)it->second / total * 100);
+      }
+
+    }
+
+  }
+  return 0;
+}
