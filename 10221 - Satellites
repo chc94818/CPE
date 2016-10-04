@@ -1,0 +1,31 @@
+/*
+算弦跟弧
+*/
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+using namespace std;
+int main(){
+	double r,a;
+	char s[3];
+	while(scanf("%lf%lf%s",&r,&a,&s)==3){
+		
+		r+=6440;
+		double angle = a;
+		double rad = 0;
+		if(strcmp(s,"deg")==0){
+			while(angle>180)angle-=360;
+		}else{
+		angle/=60;
+		}
+		rad = angle / 180 * M_PI;
+		printf("%.6lf %.6lf\n",r*rad,2*r*sin(rad/2));
+		
+	}
+	
+	
+	return 0;
+	
+}
