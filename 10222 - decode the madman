@@ -1,0 +1,31 @@
+
+/*
+字元兌換
+*/
+
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+
+int main(){
+	char k[] = "`1234567890-=qwertyuiop[]\\asdfghjkl;\'zxcvbnm,./";
+	char s[1000];
+	while(gets(s)){
+		for(int i = 0 ; i < strlen(s); i++){
+			if(s[i]==' '){
+				cout<<" ";
+				continue;
+			}
+			for(int j = 0 ; j < strlen(k); j++){
+				if(s[i]==k[j])cout << k[j-2];
+				if(s[i]>64&&s[i]<91){
+					if(s[i]+32==k[j])cout << k[j-2];	
+				}
+			}
+		}
+		cout << endl;
+	}
+	return 0;
+}
