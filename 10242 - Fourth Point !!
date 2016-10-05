@@ -1,0 +1,39 @@
+/*
+題意:給定平行四邊形三點求第四點
+題目的測資有陷阱
+點的順序其實是不固定的
+要先自己排序
+*/
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+using namespace std;
+int main(){
+	float p[8]={0};
+
+	while(scanf("%f%f%f%f%f%f%f%f",&p[0],&p[1],&p[2],&p[3],&p[4],&p[5],&p[6],&p[7])==8){
+		int s1=-1;
+		int s2=-1;
+		
+		for(int i = 0 ; i < 3 ;i++){
+			for(int j=i+1;j< 4;j++){
+			//cout << p[i*2] << " "<< p[i*2+1]<<" !! "<<p[j*2]<<" "<<p[j*2+1]<<endl;
+				if(p[i*2]==p[j*2]&&p[i*2+1]==p[j*2+1]){
+					s1 = i;
+					s2 = j;
+				}
+			}			
+		}
+	
+	
+		swap(p[s1*2],p[2]);
+		swap(p[s1*2+1],p[3]);
+		swap(p[s2*2],p[6]);
+		swap(p[s2*2+1],p[7]);
+	
+		
+		
+		printf("%.3f %.3f\n",p[0]+p[4]-p[2],p[1]+p[5]-p[3]);
+	}
+	return 0;
+}
