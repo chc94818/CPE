@@ -1,0 +1,49 @@
+/*
+若一數字為質數且起位元顛倒後與原先不同且依然為質數則為  EMIRP
+若非但此數為質數則為  PRIME
+再者為合數  NOT PRIME
+解法:埃拉托斯特尼篩法
+*/
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+using namespace std;
+int p[1000000] = {0};
+
+
+int reverse(int n){
+	int r = 0;
+	while(n>0){
+		r*=10;
+		r+=n%10;
+		n/=10;
+	}
+	return r;
+}
+
+int main(){
+	p[0] = 1;
+	p[1] = 1;
+	p[2] = 0;
+	
+	for(int i = 2 ; i < 1000000 ; i ++){
+		if(p[i]==0)
+		for(int j = i+i ; j < 1000000;j+=i){
+			p[j]=1;
+		
+		}	
+	
+	}
+	
+
+	int n= 0;
+	while(scanf("%d",&n)==1){
+	
+		int r = reverse(n);
+		if(p[n]==0&&p[r]==0&&n!=r)cout << n << " is emirp."<<endl;
+		else if(p[n]==0)cout << n << " is prime."<<endl;
+		else if(p[n]==1)cout << n << " is not prime."<<endl;
+	}
+	return 0;
+}
