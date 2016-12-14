@@ -1,0 +1,41 @@
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+using namespace std;
+int main(){
+	char temp[50];
+	int time;
+	bool first = true;
+	int vector = 0;
+	
+	float dis = 0;
+	while(gets(temp)){
+		int h,m,s,v;
+		int tTemp;
+		int d;
+		sscanf(temp,"%d:%d:%d %d",&h,&m,&s,&v);
+		tTemp = h*3600+m*60+s;
+		d= tTemp - time;
+		time = tTemp;
+		
+		
+		if(vector!=v){
+			if(d >0){
+				
+			float t = vector;
+			t = t*d/3600;
+			dis +=t ;
+			}
+			vector = v;
+		
+		
+		}else{
+			float t = vector;
+			t = t*d/3600;
+			dis +=t ;
+			printf("%.2d:%.2d:%.2d %.2f km\n",h,m,s,dis);
+		}
+	}
+	
+
+}
