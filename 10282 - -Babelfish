@@ -1,0 +1,29 @@
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <map>
+using namespace std;
+
+int main(){
+	map<string,string> m;
+	char temp[1000];
+	while(gets(temp)){
+		if(temp[0]=='\0')break;
+		char a[500],b[500];
+		sscanf(temp,"%s %s",a,b);
+		m[b] = a;
+	}
+	
+	while(gets(temp)){
+		if(temp[0]=='\0')break;
+		if(m[temp]=="\0"){
+			cout << "eh"<<endl;
+		}else{
+			cout <<m[temp]<<endl;
+		}
+	
+	}
+	
+
+}
